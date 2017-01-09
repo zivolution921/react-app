@@ -4,6 +4,6 @@ import App from './App';
 
 
 ReactDOM.render(
-  <App />,
+  <App cat={5} text="this is the prop value" />,
   document.getElementById('root')
 );
