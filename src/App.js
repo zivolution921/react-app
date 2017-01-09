@@ -21,6 +21,7 @@ class App extends React.Component {
         <h1>Hello World!!!</h1>
         <b>Bold</b>
         <h1>{txt}</h1>
+        <Title text="Welcome to my react app" />
         <h2>{this.state.stateTxt} - {this.state.cat}</h2>
         <Widget update={this.update.bind(this)} />
         <Button>I <Heart /> React</Button>
@@ -32,12 +33,28 @@ class App extends React.Component {
   }
 }
 
+const Title = (props) => <h1>Title: {props.text} </h1>
+
+Title.propTypes = {
+  text(props, propName, component) {
+    if(!(propName in props)){
+      return new Error('missing ${propName}')
+    }
+    if(props[propName].length < 6) {
+      return new Error('${propName} was too short')
+    }
+  }
+}
+
+
 const Button = (props) => <button>{props.children}</button>
 class Heart extends React.Component {
   render() {
     return <span>&hearts;</span>
   }
 }
+
+
 
 const Widget = (props) => 
 <input type="text" onChange={props.update} />
