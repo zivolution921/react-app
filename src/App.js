@@ -21,9 +21,9 @@ class App extends React.Component {
         <h1>Hello World!!!</h1>
         <b>Bold</b>
         <h1>{txt}</h1>
-        <input type="text" 
-        onChange={this.update.bind(this)}/>
         <h2>{this.state.stateTxt} - {this.state.cat}</h2>
+        <Widget update={this.update.bind(this)} />
+        <Button>I <Heart /> React</Button>
       </div>
       
       // this is the function that we are returning
@@ -31,6 +31,17 @@ class App extends React.Component {
     ) 
   }
 }
+
+const Button = (props) => <button>{props.children}</button>
+class Heart extends React.Component {
+  render() {
+    return <span>&hearts;</span>
+  }
+}
+
+const Widget = (props) => 
+<input type="text" onChange={props.update} />
+       
 // can have state
 // const App = () => <h1>Hello World</h1>
 // the type of value that we are looking for
